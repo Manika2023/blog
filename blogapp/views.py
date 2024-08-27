@@ -142,7 +142,7 @@ def search_api(request):
     title = request.GET.get('title')
     
     if title:
-        posts = Blog_Post.objects.filter(title__icontains=title)
+        posts = Blog_Post.objects.filter(programming_language_tags__icontains=title)
         serializer = BlogPostSerializer(posts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
